@@ -4,7 +4,7 @@ import co.com.apicreditos.mongo.generic.models.StoredEvent;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "vinculaciones")
+@Document(collection = "vinculacion")
 public class EventDocument {
 
     @Id

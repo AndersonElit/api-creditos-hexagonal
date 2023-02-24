@@ -13,7 +13,7 @@ spring:
     include: null
   data:
     mongodb:
-      uri: "mongodb://creditosuser:12345@190.250.51.143:32/creditos"
+      uri: "mongodb+srv://creditosuser:12345@cluster0.vynv4.mongodb.net/creditos?retryWrites=true&w=majority"
 management:
   endpoints:
     web:

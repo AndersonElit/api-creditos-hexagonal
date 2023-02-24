@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.mongo.MongoProperties;
 import org.springframework.boot.autoconfigure.mongo.MongoPropertiesClientSettingsBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,4 +31,5 @@ public class MongoConfig {
         list.add(new MongoPropertiesClientSettingsBuilderCustomizer(properties));
         return new ReactiveMongoClientFactory(list);
     }
+
 }
