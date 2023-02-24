@@ -1,24 +1,21 @@
-package co.com.apicreditos.mongo.vinculacion.document;
+package co.com.apicreditos.mongo.document;
 
 import co.com.apicreditos.mongo.generic.models.StoredEvent;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.util.Date;
 
 @Document(collection = "vinculaciones")
-public class VinculacionDocument {
+public class EventDocument {
 
     @Id
     private String aggregateRootId;
 
     private StoredEvent storedEvent;
 
-    public VinculacionDocument() {
+    public EventDocument() {
     }
 
-    public VinculacionDocument(String aggregateRootId, StoredEvent storedEvent) {
+    public EventDocument(String aggregateRootId, StoredEvent storedEvent) {
         this.aggregateRootId = aggregateRootId;
         this.storedEvent = storedEvent;
     }

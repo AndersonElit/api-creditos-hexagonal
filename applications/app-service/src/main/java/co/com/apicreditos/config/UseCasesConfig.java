@@ -1,18 +1,28 @@
 package co.com.apicreditos.config;
 
+import co.com.apicreditos.usecase.credito.ConsultarCreditoUseCase;
+import co.com.apicreditos.usecase.credito.ConsultarCreditoUseCaseNoReactivo;
+import co.com.apicreditos.usecase.credito.CrearNuevoCreditoUseCase;
+import co.com.apicreditos.usecase.credito.CrearNuevoCreditoUseCaseNoReactivo;
+import co.com.apicreditos.usecase.credito.gateways.CreditoRepository;
+import co.com.apicreditos.usecase.credito.gateways.CreditoRepositoryNoReactivo;
+import co.com.apicreditos.usecase.vinculacion.*;
+import co.com.apicreditos.usecase.vinculacion.gateways.VinculacionRepository;
+import co.com.apicreditos.usecase.vinculacion.gateways.VinculacionRepositoryNoReactivo;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 
 @Configuration
-@ComponentScan(basePackages = "co.com.apicreditos.usecase",
+/*@ComponentScan(basePackages = "co.com.apicreditos.usecase",
         includeFilters = {
                 @ComponentScan.Filter(type = FilterType.REGEX, pattern = "^.+UseCase$")
         },
-        useDefaultFilters = false)
+        useDefaultFilters = false)*/
 public class UseCasesConfig {
 
-        /*@Bean
+        @Bean
         public ConsultarCreditoUseCase consultarCreditoUseCase(CreditoRepository repository) {
                 return new ConsultarCreditoUseCase(repository);
         }
@@ -60,6 +70,6 @@ public class UseCasesConfig {
         @Bean
         public VincularClienteUseCaseNoReactivo vincularClienteUseCaseNoReactivo(VinculacionRepositoryNoReactivo repository) {
                 return new VincularClienteUseCaseNoReactivo(repository);
-        }*/
+        }
 
 }
