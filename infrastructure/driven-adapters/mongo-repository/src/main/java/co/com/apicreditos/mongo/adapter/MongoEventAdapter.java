@@ -1,6 +1,7 @@
 package co.com.apicreditos.mongo.adapter;
 
 import co.com.apicreditos.model.generic.DomainEvent;
+import co.com.apicreditos.model.vinculacion.events.VinculacionCreada;
 import co.com.apicreditos.mongo.generic.models.StoredEvent;
 import co.com.apicreditos.mongo.document.EventDocument;
 import co.com.apicreditos.mongo.repository.MongoEventRepository;
@@ -30,10 +31,10 @@ public class MongoEventAdapter implements VinculacionRepository {
     public Mono<DomainEvent> saveEvent(DomainEvent event) {
         EventDocument document = new EventDocument();
         document.setAggregateRootId(event.aggregateRootId());
-        document.setStoredEvent(new StoredEvent("eventBody", LocalDate.now(), "type"));
-        System.out.println("Evento con id " + event.aggregateRootId() + " se guardo de forma exitosa.");
-        var savedEvent = repository.save(document);
-        return null;
+        document.setOccurredOn(LocalDate.now());
+        document.setTypeName(event.type);
+        Mono<EventDocument> savedEvent = repository.save(document);
+        return savedEvent.map(eventDocument -> new VinculacionCreada(eventDocument.getAggregateRootId()));
     }
 
 }

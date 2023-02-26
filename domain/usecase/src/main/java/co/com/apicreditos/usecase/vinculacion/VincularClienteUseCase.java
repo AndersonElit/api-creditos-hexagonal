@@ -9,6 +9,8 @@ import co.com.apicreditos.usecase.vinculacion.gateways.VinculacionRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 public class VincularClienteUseCase extends UseCaseForCommand<VincularClienteCommand> {
 
     private final VinculacionRepository repository;
@@ -22,11 +24,11 @@ public class VincularClienteUseCase extends UseCaseForCommand<VincularClienteCom
 
         return vincularClienteCommandMono.flatMapIterable(command -> {
             Vinculacion vinculacion = new Vinculacion(
-                    VinculacionId.of(command.getVinculacionId())
+                    VinculacionId.of(UUID.randomUUID().toString())
             );
-            vinculacion.crearCliente(command.getCliente());
-            vinculacion.asignarAsesor(command.getAsesor());
-            vinculacion.asignarOficina(command.getOficina());
+            //vinculacion.crearCliente(command.getCliente());
+            //vinculacion.asignarAsesor(command.getAsesor());
+            //vinculacion.asignarOficina(command.getOficina());
             return vinculacion.getUncommittedChanges();
         }).flatMap(
                 event -> repository.saveEvent(event));

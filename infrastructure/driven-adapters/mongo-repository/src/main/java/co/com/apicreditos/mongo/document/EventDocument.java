@@ -4,20 +4,23 @@ import co.com.apicreditos.mongo.generic.models.StoredEvent;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "vinculacion")
+import java.time.LocalDate;
+
+@Document(value = "vinculacion")
 public class EventDocument {
 
     @Id
     private String aggregateRootId;
-
-    private StoredEvent storedEvent;
+    private LocalDate occurredOn;
+    private String typeName;
 
     public EventDocument() {
     }
 
-    public EventDocument(String aggregateRootId, StoredEvent storedEvent) {
+    public EventDocument(String aggregateRootId, LocalDate occurredOn, String typeName) {
         this.aggregateRootId = aggregateRootId;
-        this.storedEvent = storedEvent;
+        this.occurredOn = occurredOn;
+        this.typeName = typeName;
     }
 
     public String getAggregateRootId() {
@@ -28,12 +31,20 @@ public class EventDocument {
         this.aggregateRootId = aggregateRootId;
     }
 
-    public StoredEvent getStoredEvent() {
-        return storedEvent;
+    public LocalDate getOccurredOn() {
+        return occurredOn;
     }
 
-    public void setStoredEvent(StoredEvent storedEvent) {
-        this.storedEvent = storedEvent;
+    public void setOccurredOn(LocalDate occurredOn) {
+        this.occurredOn = occurredOn;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
 }

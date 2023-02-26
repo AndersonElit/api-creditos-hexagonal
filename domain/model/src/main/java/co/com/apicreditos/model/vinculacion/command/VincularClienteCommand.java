@@ -7,6 +7,23 @@ import co.com.apicreditos.model.vinculacion.entities.Oficina;
 
 public class VincularClienteCommand extends Command {
     private String vinculacionId;
+
+    public VincularClienteCommand() {
+    }
+
+    public VincularClienteCommand(String vinculacionId) {
+        this.vinculacionId = vinculacionId;
+    }
+
+    public String getVinculacionId() {
+        return vinculacionId;
+    }
+
+    public void setVinculacionId(String vinculacionId) {
+        this.vinculacionId = vinculacionId;
+    }
+
+    /*
     private Cliente cliente;
     private Asesor asesor;
     private Oficina oficina;
@@ -51,6 +68,6 @@ public class VincularClienteCommand extends Command {
 
     public void setOficina(Oficina oficina) {
         this.oficina = oficina;
-    }
+    }*/
 
 }
