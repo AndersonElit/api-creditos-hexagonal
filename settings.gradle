@@ -18,3 +18,7 @@ include ':mongo-repository'
 project(':mongo-repository').projectDir = file('./infrastructure/driven-adapters/mongo-repository')
 include ':reactive-web'
 project(':reactive-web').projectDir = file('./infrastructure/entry-points/reactive-web')
+include ':rabbitmq-event-bus'
+project(':rabbitmq-event-bus').projectDir = file('./infrastructure/driven-adapters/rabbitmq-event-bus')
+include ':serializer'
+project(':serializer').projectDir = file('./infrastructure/helpers/serializer')

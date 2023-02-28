@@ -7,14 +7,12 @@ import co.com.apicreditos.model.vinculacion.entities.Oficina;
 
 public class VincularClienteCommand extends Command {
     private String vinculacionId;
-    private String clienteId;
 
     public VincularClienteCommand() {
     }
 
-    public VincularClienteCommand(String vinculacionId, String clienteId) {
+    public VincularClienteCommand(String vinculacionId) {
         this.vinculacionId = vinculacionId;
-        this.clienteId = clienteId;
     }
 
     public String getVinculacionId() {
@@ -23,14 +21,6 @@ public class VincularClienteCommand extends Command {
 
     public void setVinculacionId(String vinculacionId) {
         this.vinculacionId = vinculacionId;
-    }
-
-    public String getClienteId() {
-        return clienteId;
-    }
-
-    public void setClienteId(String clienteId) {
-        this.clienteId = clienteId;
     }
 
 }
