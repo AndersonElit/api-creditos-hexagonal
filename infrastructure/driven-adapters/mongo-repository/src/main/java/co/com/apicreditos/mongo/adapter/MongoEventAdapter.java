@@ -1,10 +1,10 @@
 package co.com.apicreditos.mongo.adapter;
 
 import co.com.apicreditos.model.generic.DomainEvent;
-import co.com.apicreditos.model.vinculacion.events.VinculacionCreada;
-import co.com.apicreditos.mongo.generic.models.StoredEvent;
 import co.com.apicreditos.mongo.document.EventDocument;
+import co.com.apicreditos.mongo.generic.mapper.Mapper;
 import co.com.apicreditos.mongo.repository.MongoEventRepository;
+import co.com.apicreditos.usecase.generic.dto.EventDocumentDto;
 import co.com.apicreditos.usecase.vinculacion.gateways.VinculacionRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -28,13 +28,9 @@ public class MongoEventAdapter implements VinculacionRepository {
     }
 
     @Override
-    public Mono<DomainEvent> saveEvent(DomainEvent event) {
-        EventDocument document = new EventDocument();
-        document.setAggregateRootId(event.aggregateRootId());
-        document.setOccurredOn(LocalDate.now());
-        document.setTypeName(event.type);
-        Mono<EventDocument> savedEvent = repository.save(document);
-        return savedEvent.map(eventDocument -> new VinculacionCreada(eventDocument.getAggregateRootId()));
+    public Mono<DomainEvent> saveEvent(EventDocumentDto dto) {
+        return repository.save(Mapper.map(dto, EventDocument.class))
+                .map(eventDocument -> eventDocument.getDomainEvent());
     }
 
 }

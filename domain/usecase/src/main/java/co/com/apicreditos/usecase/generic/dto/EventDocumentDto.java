@@ -1,29 +1,25 @@
-package co.com.apicreditos.mongo.document;
+package co.com.apicreditos.usecase.generic.dto;
 
 import co.com.apicreditos.model.generic.DomainEvent;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Document(value = "vinculacion")
-public class EventDocument {
+public class EventDocumentDto {
 
-    @Id
     private String documentoId;
-    private LocalDateTime occurredOn;
     private String aggregateRootId;
+    private LocalDateTime occurredOn;
     private String typeName;
     private DomainEvent domainEvent;
 
-    public EventDocument() {
+    public EventDocumentDto() {
     }
 
-    public EventDocument(String documentoId, LocalDateTime occurredOn, String aggregateRootId, String typeName, DomainEvent domainEvent) {
+    public EventDocumentDto(String documentoId, String aggregateRootId, LocalDateTime occurredOn, String typeName, DomainEvent domainEvent) {
         this.documentoId = documentoId;
-        this.occurredOn = occurredOn;
         this.aggregateRootId = aggregateRootId;
+        this.occurredOn = occurredOn;
         this.typeName = typeName;
         this.domainEvent = domainEvent;
     }
@@ -60,11 +56,4 @@ public class EventDocument {
         this.domainEvent = domainEvent;
     }
 
-    public String getDocumentoId() {
-        return documentoId;
-    }
-
-    public void setDocumentoId(String documentoId) {
-        this.documentoId = documentoId;
-    }
 }

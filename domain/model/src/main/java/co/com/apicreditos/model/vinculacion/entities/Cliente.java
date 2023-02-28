@@ -13,6 +13,11 @@ public class Cliente extends Usuario {
         this.informacionFinanciera = informacionFinanciera;
     }
 
+    public Cliente(UsuarioId id, InformacionFinanciera informacionFinanciera) {
+        super(id);
+        this.informacionFinanciera = informacionFinanciera;
+    }
+
     public Cliente(UsuarioId id) {
         super(id);
     }

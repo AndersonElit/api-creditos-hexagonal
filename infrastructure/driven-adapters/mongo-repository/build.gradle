@@ -1,6 +1,6 @@
 dependencies {
     implementation(project(":model"))
-
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation project(path: ':usecase')
+    implementation("org.modelmapper:modelmapper:3.1.1")
 }
